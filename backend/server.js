@@ -30,7 +30,14 @@ const httpServer = createServer(app);
 // Initialize Socket.IO
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: function(origin, callback) {
+      const allowed = (process.env.CORS_ORIGIN || 'http://localhost:3000').split(',').map(o => o.trim())
+      if (!origin || allowed.includes(origin)) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -44,7 +51,14 @@ ensureUploadDir();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: function(origin, callback) {
+    const allowed = (process.env.CORS_ORIGIN || 'http://localhost:3000').split(',').map(o => o.trim())
+    if (!origin || allowed.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
