@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Toaster } from 'react-hot-toast'
 import ErrorBoundary from '@components/ErrorBoundary'
+import { SocketProvider } from '@contexts/SocketContext'
 import App from './App.jsx'
 import './index.css'
 
@@ -23,8 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <App />
+        <SocketProvider>
+          <BrowserRouter>
+            <App />
           <Toaster
             position="top-right"
             toastOptions={{
@@ -49,7 +51,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               },
             }}
           />
-        </BrowserRouter>
+          </BrowserRouter>
+        </SocketProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ErrorBoundary>

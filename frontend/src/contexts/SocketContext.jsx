@@ -8,7 +8,8 @@ import toast from 'react-hot-toast'
 
 const SocketContext = createContext(null)
 
-const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// Remove /api from the URL for Socket.IO connection
+const SOCKET_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace('/api', '')
 
 export const SocketProvider = ({ children }) => {
   const socketRef = useRef(null)
