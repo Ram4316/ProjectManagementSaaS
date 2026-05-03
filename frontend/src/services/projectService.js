@@ -83,7 +83,7 @@ export const getProjectStats = async (projectId) => {
   return response.data.data.stats
 }
 
-export default {
+export const projectService = {
   getProjects,
   getProject,
   createProject,
@@ -95,4 +95,4 @@ export default {
   getProjectStats,
 }
 
-// Made with Bob
+export default projectService

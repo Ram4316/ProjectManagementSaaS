@@ -142,7 +142,7 @@ export const getOverdueTasks = async (projectId = null) => {
   return response.data.data.tasks
 }
 
-export default {
+export const taskService = {
   getTasks,
   getTask,
   createTask,
@@ -158,4 +158,4 @@ export default {
   getOverdueTasks,
 }
 
-// Made with Bob
+export default taskService
