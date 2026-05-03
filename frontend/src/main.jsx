@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Toaster } from 'react-hot-toast'
 import ErrorBoundary from '@components/ErrorBoundary'
-import { SocketProvider } from '@contexts/SocketContext'
 import App from './App.jsx'
 import './index.css'
 
@@ -24,36 +23,34 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <SocketProvider>
-          <BrowserRouter>
-            <App />
-            <Toaster
-              position="top-right"
-              toastOptions={{
+        <BrowserRouter>
+          <App />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+              },
+              success: {
                 duration: 3000,
-                style: {
-                  background: '#363636',
-                  color: '#fff',
+                iconTheme: {
+                  primary: '#4caf50',
+                  secondary: '#fff',
                 },
-                success: {
-                  duration: 3000,
-                  iconTheme: {
-                    primary: '#4caf50',
-                    secondary: '#fff',
-                  },
+              },
+              error: {
+                duration: 4000,
+                iconTheme: {
+                  primary: '#f44336',
+                  secondary: '#fff',
                 },
-                error: {
-                  duration: 4000,
-                  iconTheme: {
-                    primary: '#f44336',
-                    secondary: '#fff',
-                  },
-                },
-              }}
-            />
-          </BrowserRouter>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </SocketProvider>
+              },
+            }}
+          />
+        </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ErrorBoundary>
   </React.StrictMode>,

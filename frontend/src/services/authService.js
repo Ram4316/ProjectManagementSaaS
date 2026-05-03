@@ -53,7 +53,7 @@ export const changePassword = async (passwordData) => {
   return response.data
 }
 
-export default {
+export const authService = {
   register,
   login,
   refreshToken,
@@ -61,5 +61,7 @@ export default {
   updateProfile,
   changePassword,
 }
+
+export default authService
 
 // Made with Bob
