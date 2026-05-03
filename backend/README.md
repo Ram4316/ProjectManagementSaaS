@@ -57,6 +57,19 @@ backend/
 
    # Production mode
    npm start
+
+## 🚀 Deployment
+
+For production deployment instructions, see:
+- **[DEPLOYMENT_GUIDE.md](../DEPLOYMENT_GUIDE.md)** - Complete deployment guide for Render + Vercel
+- **[render.yaml](../render.yaml)** - Render configuration file
+
+Quick deployment checklist:
+1. ✅ Set up MongoDB Atlas
+2. ✅ Deploy backend to Render
+3. ✅ Deploy frontend to Vercel
+4. ✅ Configure environment variables
+5. ✅ Test all endpoints
    ```
 
 ## 🔧 Environment Variables
